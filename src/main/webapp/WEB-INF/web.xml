@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+	id="WebApp_ID" version="3.0">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- 客户端上传图片 -->
+  <servlet>
+    <servlet-name>fileUploadify</servlet-name>
+    <servlet-class>com.cn.servlet.ImageUpload</servlet-class>
+    <init-param>
+      <param-name>max_num</param-name>
+      <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>localhost</param-name>
+      <param-value>http://192.168.16.58:8082/uploads/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fileUploadify</servlet-name>
+    <url-pattern>/fileUploadify</url-pattern>
+  </servlet-mapping>
+  <!-- 客户端base64上传图片 -->
+   <servlet>
+    <servlet-name>imageForBase64</servlet-name>
+    <servlet-class>com.cn.servlet.ImageForBase64</servlet-class>
+    <init-param>
+      <param-name>max_num</param-name>
+      <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>localhost</param-name>
+      <param-value>http://192.168.16.58:8082/uploads/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imageForBase64</servlet-name>
+    <url-pattern>/imageForBase64</url-pattern>
+  </servlet-mapping>
+  <!-- 用户自定义宽高图片 -->
+  <servlet>
+    <servlet-name>imageUserDefined</servlet-name>
+    <servlet-class>com.cn.servlet.ImageUserDefined</servlet-class>
+    <init-param>
+      <param-name>max_num</param-name>
+      <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>localhost</param-name>
+      <param-value>http://192.168.16.58:8082/uploads/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imageUserDefined</servlet-name>
+    <url-pattern>/imageUserDefined</url-pattern>
+  </servlet-mapping>
+  <!-- 图片生成大,中,小 图片 -->
+  <servlet>
+    <servlet-name>imageBigMidMin</servlet-name>
+    <servlet-class>com.cn.servlet.ImageBigMidMin</servlet-class>
+    <init-param>
+      <param-name>max_num</param-name>
+      <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>localhost</param-name>
+      <param-value>http://192.168.16.58:8082/uploads/</param-value>
+    </init-param>
+      <init-param>
+      <param-name>bigWidth</param-name>
+      <param-value>1500</param-value>
+    </init-param>
+    <init-param>
+      <param-name>bigHeight</param-name>
+      <param-value>1500</param-value>
+    </init-param>
+    <init-param>
+      <param-name>midWidth</param-name>
+      <param-value>800</param-value>
+    </init-param>
+    <init-param>
+      <param-name>midHeight</param-name>
+      <param-value>800</param-value>
+    </init-param>
+    <init-param>
+      <param-name>minWidth</param-name>
+      <param-value>254</param-value>
+    </init-param>
+    <init-param>
+      <param-name>minHeight</param-name>
+      <param-value>254</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imageBigMidMin</servlet-name>
+    <url-pattern>/imageBigMidMin</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 文件(非图片)上传 -->
+  <servlet>
+    <servlet-name>fileUpload</servlet-name>
+    <servlet-class>com.cn.servlet.FileUpload</servlet-class>
+    <init-param>
+      <param-name>max_num</param-name>
+      <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>localhost</param-name>
+      <param-value>http://192.168.16.58:8082/files/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fileUpload</servlet-name>
+    <url-pattern>/fileUpload</url-pattern>
+  </servlet-mapping>
+  <!-- 过滤器 跨域过滤-->
+  <filter>
+     <filter-name>fileFilter</filter-name>
+    <filter-class>com.cn.filter.FileFilter</filter-class>
+  </filter>
+  <filter-mapping>
+     <filter-name>fileFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+<!--    <servlet>
+    <servlet-name>serv</servlet-name>
+    <servlet-class>com.cn.servlet.ServletClass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>serv</servlet-name>
+    <url-pattern>/serv</url-pattern>
+  </servlet-mapping> -->
+  <!-- 秘钥校验filter -->
+ <!--  <filter>
+      <filter-name>safeCheckFilter</filter-name>
+      <filter-class>com.cn.common.filter.SafeCheckFilter</filter-class>
+       <init-param>
+          <param-name>secretKey</param-name>
+          <param-value>111111112222222233333333</param-value>
+      </init-param>
+ </filter>
+  <filter-mapping>
+      <filter-name>safeCheckFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+</web-app>
